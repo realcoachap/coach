@@ -816,7 +816,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="page-title">
-                <h1>Schedule</h1>
+                <h1>Ascended Calendar</h1>
                 <div class="date-display" id="currentDate"></div>
             </div>
             
@@ -848,8 +848,8 @@
             <div id="scheduleSection" class="calendar-section">
                 <div class="super-calendar-container">
                     <div class="super-calendar-header">
-                        <h3><i class="fas fa-calendar-alt"></i> SUPER CALENDAR</h3>
-                        <p>Enhanced Productivity & Organization System</p>
+                        <h3><i class="fas fa-calendar-alt"></i> ASCENDED CALENDAR</h3>
+                        <p>Elite Fitness & Wellness Scheduling System</p>
                         <div class="super-calendar-controls">
                             <button class="super-control-btn"><i class="fas fa-arrow-left"></i> Previous Week</button>
                             <button class="super-control-btn">Today <i class="fas fa-home"></i></button>
@@ -1851,6 +1851,68 @@
             });
         }
         
+        // Show event modal when clicking on calendar items
+        function showEventModal(date, dayElement) {
+            // Create modal overlay
+            const modal = document.createElement('div');
+            modal.id = 'event-modal';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+            modal.style.zIndex = '1000';
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            
+            // Create modal content
+            const modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = 'white';
+            modalContent.style.padding = '30px';
+            modalContent.style.borderRadius = '15px';
+            modalContent.style.width = '400px';
+            modalContent.style.maxWidth = '90%';
+            modalContent.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            modalContent.style.textAlign = 'center';
+            
+            modalContent.innerHTML = `
+                <h3 style="margin-top:0; color: #4361ee;">Schedule for ${date}</h3>
+                <p>Select an event type:</p>
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                    <button class="btn btn-primary" onclick="addBooking('${date}', 'booking', this)" style="padding: 12px; font-size: 1rem; margin: 5px 0;">📅 Book a Session</button>
+                    <button class="btn btn-success" onclick="addBooking('${date}', 'availability', this)" style="padding: 12px; font-size: 1rem; margin: 5px 0;">⏱️ Set Availability</button>
+                    <button class="btn btn-outline" onclick="closeModal()" style="padding: 12px; font-size: 1rem; margin: 5px 0;">Cancel</button>
+                </div>
+            `;
+            
+            // Close modal when clicking outside content
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+        }
+        
+        // Close modal function
+        function closeModal() {
+            const modal = document.getElementById('event-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        // Add booking to the calendar
+        function addBooking(date, type, element) {
+            const buttonText = element.textContent;
+            alert(\`You selected: \${buttonText}\\nDate: \${date}\\nThis would connect to your scheduling system.\`);
+            closeModal();
+        }
+        
         // Super Calendar Interactivity
         document.addEventListener('DOMContentLoaded', function() {
             // Habit tracking functionality
@@ -1886,6 +1948,30 @@
             navBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     alert('Month navigation would occur here.');
+                });
+            });
+            
+            // Add click events to day cards for event selection
+            const dayCards = document.querySelectorAll('.super-day-card');
+            dayCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const dayName = this.querySelector('.super-day-name').textContent;
+                    const dayDate = this.querySelector('.super-day-date').textContent;
+                    const fullDate = \`\${dayName}, \${dayDate}\`;
+                    showEventModal(fullDate, this);
+                });
+            });
+            
+            // Add click events to monthly calendar days
+            const monthDays = document.querySelectorAll('.super-month-day:not(.header)');
+            monthDays.forEach(day => {
+                day.addEventListener('click', function() {
+                    if (this.textContent.trim() !== '') {
+                        const dayNum = this.textContent;
+                        const monthYear = document.querySelector('.current-month').textContent;
+                        const fullDate = \`\${dayNum} \${monthYear}\`;
+                        showEventModal(fullDate, this);
+                    }
                 });
             });
             
