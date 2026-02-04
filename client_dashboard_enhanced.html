@@ -1540,7 +1540,356 @@
                     break;
                 case 'weekly':
                     // Reload the standard weekly view
-                    location.reload();
+                    // Reload the weekly view content instead of refreshing the whole page
+                    document.querySelector('.super-calendar-body').innerHTML = `
+                        <div class="super-sidebar">
+                            <h3 class="super-section-title"><i class="fas fa-calendar-day"></i> Monthly Overview</h3>
+                            <div class="current-month">
+                                February 2026
+                                <div class="month-navigation">
+                                    <button class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="super-month-grid">
+                                <div class="super-month-day header">Sun</div>
+                                <div class="super-month-day header">Mon</div>
+                                <div class="super-month-day header">Tue</div>
+                                <div class="super-month-day header">Wed</div>
+                                <div class="super-month-day header">Thu</div>
+                                <div class="super-month-day header">Fri</div>
+                                <div class="super-month-day header">Sat</div>
+                                
+                                <div class="super-month-day"></div>
+                                <div class="super-month-day"></div>
+                                <div class="super-month-day"></div>
+                                <div class="super-month-day"></div>
+                                <div class="super-month-day"></div>
+                                <div class="super-month-day">1</div>
+                                <div class="super-month-day">2</div>
+                                
+                                <div class="super-month-day">3</div>
+                                <div class="super-month-day">4</div>
+                                <div class="super-month-day today">5</div>
+                                <div class="super-month-day">6</div>
+                                <div class="super-month-day">7</div>
+                                <div class="super-month-day">8</div>
+                                <div class="super-month-day">9</div>
+                                
+                                <div class="super-month-day">10</div>
+                                <div class="super-month-day">11</div>
+                                <div class="super-month-day">12</div>
+                                <div class="super-month-day">13</div>
+                                <div class="super-month-day">14</div>
+                                <div class="super-month-day">15</div>
+                                <div class="super-month-day">16</div>
+                                
+                                <div class="super-month-day">17</div>
+                                <div class="super-month-day">18</div>
+                                <div class="super-month-day">19</div>
+                                <div class="super-month-day">20</div>
+                                <div class="super-month-day">21</div>
+                                <div class="super-month-day">22</div>
+                                <div class="super-month-day">23</div>
+                                
+                                <div class="super-month-day">24</div>
+                                <div class="super-month-day">25</div>
+                                <div class="super-month-day">26</div>
+                                <div class="super-month-day">27</div>
+                                <div class="super-month-day">28</div>
+                                <div class="super-month-day"></div>
+                                <div class="super-month-day"></div>
+                            </div>
+                            
+                            <h3 class="super-section-title"><i class="fas fa-chart-line"></i> Weekly Stats</h3>
+                            <div class="stat-card" style="padding: 12px; margin-bottom: 10px;">
+                                <div class="stat-title">Tasks Completed</div>
+                                <div class="stat-value">24/32</div>
+                            </div>
+                            <div class="stat-card" style="padding: 12px; margin-bottom: 10px;">
+                                <div class="stat-title">Productivity Score</div>
+                                <div class="stat-value">87%</div>
+                            </div>
+                            
+                            <h3 class="super-section-title"><i class="fas fa-check-circle"></i> Habit Tracker</h3>
+                            <div class="habit-item" style="display: flex; align-items: center; margin-bottom: 10px; padding: 8px; background-color: #f8f9fa; border-radius: 10px;">
+                                <div class="habit-icon" style="width: 25px; height: 25px; background: linear-gradient(135deg, #4361ee, #3a0ca3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; color: white; font-size: 0.8rem;">💧</div>
+                                <div class="habit-info" style="flex: 1; font-size: 0.9rem;">
+                                    <div class="habit-name">Drink Water</div>
+                                </div>
+                                <div class="habit-checkbox" style="width: 16px; height: 16px; border: 2px solid #ddd; border-radius: 50%; cursor: pointer;"></div>
+                            </div>
+                            <div class="habit-item" style="display: flex; align-items: center; margin-bottom: 10px; padding: 8px; background-color: #f8f9fa; border-radius: 10px;">
+                                <div class="habit-icon" style="width: 25px; height: 25px; background: linear-gradient(135deg, #4361ee, #3a0ca3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; color: white; font-size: 0.8rem;">🏃</div>
+                                <div class="habit-info" style="flex: 1; font-size: 0.9rem;">
+                                    <div class="habit-name">Exercise</div>
+                                </div>
+                                <div class="habit-checkbox" style="width: 16px; height: 16px; border: 2px solid #ddd; border-radius: 50%; cursor: pointer;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="super-days-grid">
+                            <!-- Monday -->
+                            <div class="super-day-card monday">
+                                <div class="super-day-header">
+                                    <div>
+                                        <div class="super-day-name">Monday</div>
+                                        <div class="super-day-date">Feb 2</div>
+                                    </div>
+                                    <div class="super-completion-rate">85%</div>
+                                </div>
+                                <div class="super-today-focus">Complete project proposal</div>
+                                
+                                <div class="super-tasks-section">
+                                    <h4><i class="fas fa-tasks"></i> Tasks</h4>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-high"></div>
+                                        <span>Finish client presentation</span>
+                                    </div>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-medium"></div>
+                                        <span>Team meeting at 2 PM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-events-section">
+                                    <h4><i class="fas fa-calendar"></i> Events</h4>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-work"></div>
+                                        <span>Client Call - 10:00 AM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-notes-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                    <textarea placeholder="Add notes for Monday...">Need to prepare materials for client meeting</textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Tuesday -->
+                            <div class="super-day-card tuesday">
+                                <div class="super-day-header">
+                                    <div>
+                                        <div class="super-day-name">Tuesday</div>
+                                        <div class="super-day-date">Feb 3</div>
+                                    </div>
+                                    <div class="super-completion-rate">70%</div>
+                                </div>
+                                <div class="super-today-focus">Prepare for conference call</div>
+                                
+                                <div class="super-tasks-section">
+                                    <h4><i class="fas fa-tasks"></i> Tasks</h4>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-high"></div>
+                                        <span>Conference call at 10 AM</span>
+                                    </div>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-medium"></div>
+                                        <span>Review quarterly reports</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-events-section">
+                                    <h4><i class="fas fa-calendar"></i> Events</h4>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-work"></div>
+                                        <span>Team Sync - 11:00 AM</span>
+                                    </div>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-personal"></div>
+                                        <span>Dentist Appointment - 4:00 PM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-notes-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                    <textarea placeholder="Add notes for Tuesday...">Remember to call dentist to confirm appointment</textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Wednesday -->
+                            <div class="super-day-card wednesday">
+                                <div class="super-day-header">
+                                    <div>
+                                        <div class="super-day-name">Wednesday</div>
+                                        <div class="super-day-date">Feb 4</div>
+                                    </div>
+                                    <div class="super-completion-rate">90%</div>
+                                </div>
+                                <div class="super-today-focus">Submit project milestone</div>
+                                
+                                <div class="super-tasks-section">
+                                    <h4><i class="fas fa-tasks"></i> Tasks</h4>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-high"></div>
+                                        <span>Submit project milestone</span>
+                                    </div>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-medium"></div>
+                                        <span>Lunch with team</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-events-section">
+                                    <h4><i class="fas fa-calendar"></i> Events</h4>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-work"></div>
+                                        <span>Milestone Review - 2:00 PM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-notes-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                    <textarea placeholder="Add notes for Wednesday...">Prepare presentation for milestone review</textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Thursday -->
+                            <div class="super-day-card thursday">
+                                <div class="super-day-header">
+                                    <div>
+                                        <div class="super-day-name">Thursday</div>
+                                        <div class="super-day-date">Feb 5</div>
+                                    </div>
+                                    <div class="super-completion-rate">60%</div>
+                                </div>
+                                <div class="super-today-focus">Review feedback and iterate</div>
+                                
+                                <div class="super-tasks-section">
+                                    <h4><i class="fas fa-tasks"></i> Tasks</h4>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-high"></div>
+                                        <span>Review feedback from stakeholders</span>
+                                    </div>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-medium"></div>
+                                        <span>Plan weekend activities</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-events-section">
+                                    <h4><i class="fas fa-calendar"></i> Events</h4>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-work"></div>
+                                        <span>Feedback Session - 9:00 AM</span>
+                                    </div>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-other"></div>
+                                        <span>Friend's Birthday - All Day</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-notes-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                    <textarea placeholder="Add notes for Thursday...">Follow up on feedback received today</textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Friday -->
+                            <div class="super-day-card friday">
+                                <div class="super-day-header">
+                                    <div>
+                                        <div class="super-day-name">Friday</div>
+                                        <div class="super-day-date">Feb 6</div>
+                                    </div>
+                                    <div class="super-completion-rate">75%</div>
+                                </div>
+                                <div class="super-today-focus">Wrap up week and plan next</div>
+                                
+                                <div class="super-tasks-section">
+                                    <h4><i class="fas fa-tasks"></i> Tasks</h4>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-high"></div>
+                                        <span>Weekly report submission</span>
+                                    </div>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-medium"></div>
+                                        <span>Team retrospective</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-events-section">
+                                    <h4><i class="fas fa-calendar"></i> Events</h4>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-work"></div>
+                                        <span>Retrospective - 3:00 PM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-notes-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                    <textarea placeholder="Add notes for Friday...">Prepare for next week's priorities</textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Saturday -->
+                            <div class="super-day-card saturday">
+                                <div class="super-day-header">
+                                    <div>
+                                        <div class="super-day-name">Saturday</div>
+                                        <div class="super-day-date">Feb 7</div>
+                                    </div>
+                                    <div class="super-completion-rate">45%</div>
+                                </div>
+                                <div class="super-today-focus">Relax and recharge</div>
+                                
+                                <div class="super-tasks-section">
+                                    <h4><i class="fas fa-tasks"></i> Tasks</h4>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-low"></div>
+                                        <span>Grocery shopping</span>
+                                    </div>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-low"></div>
+                                        <span>Movie night</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-events-section">
+                                    <h4><i class="fas fa-calendar"></i> Events</h4>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-personal"></div>
+                                        <span>Family Dinner - 7:00 PM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-notes-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                    <textarea placeholder="Add notes for Saturday...">Relax and enjoy the weekend</textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Sunday -->
+                            <div class="super-day-card sunday">
+                                <div class="super-day-header">
+                                    <div>
+                                        <div class="super-day-name">Sunday</div>
+                                        <div class="super-day-date">Feb 8</div>
+                                    </div>
+                                    <div class="super-completion-rate">30%</div>
+                                </div>
+                                <div class="super-today-focus">Prepare for upcoming week</div>
+                                
+                                <div class="super-tasks-section">
+                                    <h4><i class="fas fa-tasks"></i> Tasks</h4>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-medium"></div>
+                                        <span>Meal prep for week</span>
+                                    </div>
+                                    <div class="task-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-task-priority super-priority-low"></div>
+                                        <span>Read new book</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-events-section">
+                                    <h4><i class="fas fa-calendar"></i> Events</h4>
+                                    <div class="event-item" style="display: flex; align-items: center; padding: 8px; margin-bottom: 6px; background-color: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                                        <div class="super-event-type super-event-personal"></div>
+                                        <span>Self-care Day - All Day</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="super-notes-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                    <textarea placeholder="Add notes for Sunday...">Prepare mentally for the new week ahead</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    `;
                     break;
                 case 'monthly':
                     document.querySelector('.super-calendar-body').innerHTML = `
